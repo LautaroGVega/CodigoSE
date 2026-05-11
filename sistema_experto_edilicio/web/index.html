@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema Experto Edilicio</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero panel">
+      <h1>Sistema experto probabilístico — Mantenimiento edilicio</h1>
+      <p>Diagnóstico preliminar de cubiertas y techos usando <strong>Naive Bayes simplificado</strong>. Marca evidencias observadas o ejecuta casos predefinidos; la inferencia se realiza en <strong>Python</strong> y se visualiza en esta interfaz web local.</p>
+      <span class="badge">Inferencia en servidor · UI en navegador</span>
+    </header>
+
+    <section class="guide panel">
+      <h2>Guía del sistema experto</h2>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <h3>A. Hipótesis evaluadas</h3>
+          <div id="hipotesis-grid" class="hyp-grid"></div>
+        </article>
+        <article class="guide-card">
+          <h3>B. ¿Cómo razona el sistema?</h3>
+          <p class="guide-intro">
+            El sistema utiliza un modelo Naive Bayes simplificado. Para cada hipótesis se parte de una probabilidad inicial P(H). Luego, por cada evidencia seleccionada, se multiplica por la probabilidad condicional P(E|H). Finalmente, los puntajes se normalizan para obtener porcentajes. Solo se usan evidencias presentes; las evidencias no seleccionadas no se penalizan.
+          </p>
+          <div class="formula">Puntaje(H) = P(H) × P(E1|H) × P(E2|H) × ... × P(En|H)</div>
+          <ul id="reglas-globales" class="mini-list"></ul>
+        </article>
+        <article class="guide-card">
+          <h3>C. Variables / evidencias</h3>
+          <div id="evidencias-info-grid" class="ev-info-grid"></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="panel" id="panel-input">
+        <h2>📋 Evidencias del caso</h2>
+        <div class="btn-row">
+          <button type="button" class="secondary" id="btn-analizar">Analizar selección</button>
+          <button type="button" class="ghost" id="btn-limpiar">Limpiar</button>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="secondary" data-caso="1">Caso 1 · Dilatación</button>
+          <button type="button" class="secondary" data-caso="2">Caso 2 · Impermeabilización</button>
+          <button type="button" class="secondary" data-caso="3">Caso 3 · Desagüe</button>
+          <button type="button" class="secondary" data-caso="4">Caso 4 · Mixto</button>
+          <button type="button" class="secondary" data-caso="5">Caso 5 · Insuficiente</button>
+          <button type="button" class="secondary" data-caso="6">Caso 6 · Ambiguo</button>
+          <button type="button" id="btn-prop">Propagación (4 etapas)</button>
+        </div>
+        <div class="evid-grid" id="evidencias-grid"></div>
+      </section>
+
+      <section class="panel" id="panel-out">
+        <h2>📊 Resultado</h2>
+        <div id="resultado-area">
+          <div class="empty-state">Selecciona evidencias y pulsa <strong>Analizar selección</strong>, o ejecuta un caso de prueba.</div>
+        </div>
+      </section>
+    </div>
+
+    <footer>Servidor Python (wsgiref) · Sin librerías externas · Datos procesados localmente</footer>
+  </div>
+</body>
+</html>
