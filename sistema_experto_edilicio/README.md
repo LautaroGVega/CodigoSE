@@ -47,16 +47,6 @@ python main.py --host 127.0.0.1 --puerto 8765
 python main.py --consola
 ```
 
-### Si tenés el archivo antiguo en la raíz `qcrak/`
-
-También podés usar el lanzador de compatibilidad (si existe):
-
-```bash
-python sistema_experto_edilicio.py
-```
-
-(Delega a `sistema_experto_edilicio/main.py`.)
-
 ## Archivos del sistema
 
 | Archivo | Rol |
